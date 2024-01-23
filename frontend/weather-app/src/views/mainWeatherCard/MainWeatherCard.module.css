@@ -1,6 +1,6 @@
-.timestamp {
-    width: 288px;
-    height: 48px;
+.mainWeatherCard{
+    width: 808px;
+    height: 476px;
     display: inline-block;
     padding-top: 16px;
     padding-bottom: 16px;
@@ -9,9 +9,4 @@
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 5px 25px rgba(45, 45, 45, 0.25); 
-}
-
-.currentTime {
-    font-family: Regular;
-    size: 16px;
 }

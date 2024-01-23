@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import SearchBar from './views/searchBar/SearchBar';
 import Timestamp from './views/timestamp/Time'
+import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
 
 function App() {
   const [city, setCity] = useState('');
@@ -49,9 +50,9 @@ function App() {
       
 
     // </>
-    <Timestamp>
+    <MainWeatherCard>
         
-        </Timestamp>
+        </MainWeatherCard>
   );
 }
 
