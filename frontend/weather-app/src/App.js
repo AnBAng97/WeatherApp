@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import SearchBar from './views/searchBar/SearchBar';
+import Timestamp from './views/timestamp/Timestamp'
 
 function App() {
   const [city, setCity] = useState('');
@@ -34,17 +36,22 @@ function App() {
     //     </div>
     //   )}
     // </div>
+    // <>
+    //   <div className="background-container">
+    //     {/* Background Image */}
+    //     <div className="background-image"></div>
 
-<div className="background-container">
-      {/* Background Image */}
-      <div className="background-image"></div>
+    //     {/* Centered Rectangle with Shadow
+    //   <div className="container">
+    //     <div className="rectangle"></div>
+    //   </div> */}
+    //   </div>
+      
 
-      {/* Centered Rectangle with Shadow */}
-      <div className="container">
-        <div className="rectangle"></div>
-      </div>
-    </div>
-
+    // </>
+    <Timestamp>
+        
+        </Timestamp>
   );
 }
 
