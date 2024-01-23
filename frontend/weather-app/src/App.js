@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import SearchBar from './views/searchBar/SearchBar';
-import Timestamp from './views/timestamp/Timestamp';
+import Timestamp from './views/timestamp/Time'
 
 function App() {
   const [city, setCity] = useState('');

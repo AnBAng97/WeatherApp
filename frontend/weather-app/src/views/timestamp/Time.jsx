@@ -1,6 +1,6 @@
-import styles from './Timestamp.module.css'
+import styles from './Time.module.css'
 
-function Timestamp(){
+function Time(){
     return(
         <div className={styles.timestamp}>
             <span className={styles.currentTime}>Current time: 21:45</span>
@@ -8,4 +8,4 @@ function Timestamp(){
     );
 }
 
-export default Timestamp
+export default Time
