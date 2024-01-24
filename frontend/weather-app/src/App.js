@@ -20,10 +20,10 @@ function App() {
   };
 
 
-  //   handleCallback = (childData) => {
-  //     // Update the name in the component's state
-  //     setCity({ name: childData });
-  // };
+    const cityCallback = (city) => {
+      // Update the name in the component's state
+      setCity(city);
+  };
 
   return (
     // <div>
@@ -59,10 +59,10 @@ function App() {
     // </>
     <>
       <div />
-      {/* <SearchBar />
-      <Time /> */}
-      <MainWeatherCard />
-
+      <SearchBar parentCallback = {cityCallback}/>
+      {/* <Time /> */}
+      {/* <MainWeatherCard /> */}
+      <p>{city}</p>
     </>
 
   );
