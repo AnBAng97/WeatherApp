@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './views/searchBar/SearchBar';
 import Timestamp from './views/timestamp/Time'
 import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
+import Time from './views/timestamp/Time';
 
 function App() {
   const [city, setCity] = useState('');
@@ -17,6 +18,12 @@ function App() {
       console.error('Error fetching weather data:', error);
     }
   };
+
+
+  //   handleCallback = (childData) => {
+  //     // Update the name in the component's state
+  //     setCity({ name: childData });
+  // };
 
   return (
     // <div>
@@ -47,12 +54,17 @@ function App() {
     //     <div className="rectangle"></div>
     //   </div> */}
     //   </div>
-      
+
 
     // </>
-    <MainWeatherCard>
-        
-        </MainWeatherCard>
+    <>
+      <div />
+      {/* <SearchBar />
+      <Time /> */}
+      <MainWeatherCard />
+
+    </>
+
   );
 }
 
