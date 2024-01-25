@@ -13,11 +13,62 @@ function MainWeatherCard() {
             </div>
 
             <div className={style.weatherGeneral}>
-                <div className={style.data}> 
+                <div className={style.data}>
                     <span className={style.temperature}>+11</span>
                     <img className={style.weatherImg} src={weatherImg} alt={weatherAlt}></img>
                 </div>
+                <div className={style.weatherBrief}>Lightly cloudy, feels like +10°</div>
             </div>
+
+            <div className={style.detailsContainer}>
+                <div className={style.details}>
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                </div>
+                <div className={style.details}>
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                    <div className={style.property}>
+                        <span className={style.propertyName}>Windspeed</span>
+                        <span className={style.value}>19.1kph</span>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+
+
+
         </div>
     </>);
 }

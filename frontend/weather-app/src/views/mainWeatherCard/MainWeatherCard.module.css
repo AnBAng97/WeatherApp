@@ -3,11 +3,11 @@
     height: 476px;
     display: inline-block;
 
-    background-color: rgb(230, 230, 230, 0.9);
+    background-color: rgb(255, 255, 255, 0.9);
     border: 1px solid grey;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 5px 25px rgba(45, 45, 45, 0.25);
+    box-shadow: 0 5px 25px #2d2d2d40;
 }
 
 .cityName {
@@ -33,14 +33,38 @@
     margin-bottom: 36px;
 }
 
-.data{
+.data {
     /* justify-content: left; */
     display: flex;
     margin-left: 16px;
     align-items: center;
 }
 
-.temperature{
+.temperature {
     font-size: 48px;
     font-weight: bold;
+}
+
+.weatherBrief {
+    display: flex;
+    margin-left: 16px;
+}
+
+.detailsContainer {
+    display: flex;
+    /* justify-content: space-evenly; */
+}
+
+.details {
+    margin: 16px;
+    width: 50%;
+   
+}
+
+.property {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+
 }

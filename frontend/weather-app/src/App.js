@@ -5,6 +5,7 @@ import SearchBar from './views/searchBar/SearchBar';
 import Timestamp from './views/timestamp/Time'
 import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
 import Time from './views/timestamp/Time';
+import WeatherProperty from './views/mainWeatherCard/WeatherProperty';
 
 function App() {
   const [city, setCity] = useState('');
@@ -57,14 +58,15 @@ function App() {
 
 
     // </>
-    <>
-      <div />
-      <SearchBar parentCallback = {cityCallback}/>
-      {/* <Time /> */}
-      {/* <MainWeatherCard /> */}
-      <p>{city}</p>
-    </>
+    // <>
+    //   <div />
+    //   <SearchBar parentCallback = {cityCallback}/>
+    //   {/* <Time /> */}
+    //   {/* <MainWeatherCard /> */}
+    //   <p>{city}</p>
+    // </>
 
+    <MainWeatherCard></MainWeatherCard>
   );
 }
 
