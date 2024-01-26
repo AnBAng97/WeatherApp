@@ -7,7 +7,7 @@ function SearchBar(props) {
     
     const sendData = (e) => {
         e.preventDefault(); // Prevents the default form submission behavior
-        props.parentCallback(city)
+        props.cityCallback(city)
     };
 
 

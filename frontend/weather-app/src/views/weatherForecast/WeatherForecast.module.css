@@ -1,78 +1,83 @@
 /* WeatherForecast.css */
 .weatherForecast {
-    text-align: center;
-    padding: 16px;
-    width: 808px;
-    height: 179px;
-    background-color: rgb(255, 255, 255, 0.9);
-    border: 1px solid grey;
-    box-shadow: 0 5px 25px #2d2d2d40;
-    border-radius: 5px;
-  }
-  
-  .forecastList {
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .slideContainer {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    vertical-align: middle;
+  text-align: center;
+  /* padding: 16px; */
+  width: 808px;
+  height: 179px;
+  background-color: rgb(255, 255, 255, 0.9);
+  border: 1px solid grey;
+  box-shadow: 0 5px 25px #2d2d2d40;
+  border-radius: 5px;
 }
-  
-  .forecastItem {
-    /* display: flex; */
-    flex: 0 0 auto;
-    width: 147px;
-    height: 119px;
-    /* border: 1px solid #ccc; */
-    /* margin-right: 10px; */
-    padding-left: 16px;
-    padding-right: 16px;
 
-  }
-  
-  .date {
-    font-weight: bold;
-  }
-  
-  .navigationButtons {
-    margin-top: 10px;
-  }
-  
-  .button {
-    width: 40px;
-    height: 40px;
-  }
+.forecastList {
+  overflow: hidden;
+  position: relative;
+}
 
-  .weatherImg{
-    width: 59px;
-    height: 59px;
-  }
+.slideContainer {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  vertical-align: middle;
+}
 
-  .button:hover{
-    -webkit-filter: brightness(70%);
-    /* -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease; */
+.forecastItems {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  vertical-align: middle;
+  width: 680px;
+  justify-content: space-between;
+}
 
-  }
+.forecastItem {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 147px;
+  height: 119px;
+  /* border: 1px solid #ccc; */
+  /* margin-right: 10px; */
+  padding-left: 8px;
+  padding-right: 8px;
 
-  .data{
-        /* justify-content: left; */
-        display: flex;
-        margin-left: 16px;
-        align-items: center;
-  }
+}
 
-  .temperature{
-    font-size: 24px;
-    font-weight: 500;
-  }
+.date {
+  font-weight: 400;
+}
 
-  .condition{
-    margin: 0%;
-  }
+.navigationButtons {
+  margin-top: 10px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.weatherImg {
+  width: 59px;
+  height: 59px;
+}
+
+.button:hover {
+  filter: brightness(70%);
+}
+
+.data {
+  /* justify-content: left; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperature {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.condition {
+  margin: 0%;
+}

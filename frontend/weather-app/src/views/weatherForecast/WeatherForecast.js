@@ -33,7 +33,7 @@ function WeatherForecast() {
   };
 
   const handleBackClick = () => {
-    if (currentIndex ==  0) return;
+    if (currentIndex == 0) return;
 
 
     const prevIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : forecastData.length - 1;
@@ -47,7 +47,8 @@ function WeatherForecast() {
       <p style={{
         textAlign: 'start',
         fontSize: 20,
-        marginTop:0
+        marginTop: 16,
+        marginLeft: 16
       }}>10-Day Weather Forecast</p>
       <div className={styles.forecastList}>
         <div
@@ -59,19 +60,21 @@ function WeatherForecast() {
             alignItems: 'center',
           }}>
             <img src={weatherImg} alt='back_btn' className={styles.button}
-             onClick={handleBackClick} />
+              onClick={handleBackClick} />
           </div>
 
-          {visibleDays.map((day, index) => (
-            <div key={index} className={styles.forecastItem}>
-              <div className={styles.data}>
-                <img className={styles.weatherImg} src={weatherImg}></img>
-                <span className={styles.temperature}>+11</span>
+          <div className={styles.forecastItems}>
+            {visibleDays.map((day, index) => (
+              <div key={index} className={styles.forecastItem}>
+                <div className={styles.data}>
+                  <img className={styles.weatherImg} src={weatherImg}></img>
+                  <span className={styles.temperature}>+11</span>
+                </div>
+                <span className={styles.condition}>{day.condition}</span>
+                <span className={styles.date}>{day.date}</span>
               </div>
-              <p className={styles.condition}>{day.condition}</p>
-              <p className={styles.date}>{day.date}</p>
-            </div>
-          ))}
+            ))}
+          </div>
 
           <div style={{
             display: 'flex',
@@ -82,7 +85,7 @@ function WeatherForecast() {
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 };

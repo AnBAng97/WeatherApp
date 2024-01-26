@@ -22,9 +22,9 @@ function App() {
   };
 
 
-    const cityCallback = (city) => {
-      // Update the name in the component's state
-      setCity(city);
+  const cityCallback = (city) => {
+    // Update the name in the component's state
+    setCity(city);
   };
 
   return (
@@ -59,16 +59,31 @@ function App() {
 
 
     // </>
-    // <>
-    //   <div />
-    //   <SearchBar parentCallback = {cityCallback}/>
-    //   {/* <Time /> */}
-    //   {/* <MainWeatherCard /> */}
-    //   <p>{city}</p>
-    // </>
+    <>
+      <div className="background-container">
+        <div className="background-image">
+          <div className="content-container">
+          <div style={{
+            display: 'flex',
+          }}>
+            <SearchBar cityCallback={cityCallback} />
+            <Time />
+
+          </div>
+          <MainWeatherCard />
+          <WeatherForecast></WeatherForecast>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </>
 
     // <MainWeatherCard></MainWeatherCard>
-    <WeatherForecast></WeatherForecast>
+    // <WeatherForecast></WeatherForecast>
   );
 }
 

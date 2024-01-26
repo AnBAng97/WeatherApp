@@ -1,17 +1,20 @@
 .timestamp {
     width: 288px;
     height: 48px;
-    display: inline-block;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background-color: rgb(230, 230, 230, 0.9);
+    display: flex;
+    background-color: rgb(255, 255, 255, 0.9);
     border: 1px solid grey;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 5px 25px rgba(45, 45, 45, 0.25); 
+    box-shadow: 0 5px 25px rgba(45, 45, 45, 0.25);
+    align-items: center;
+    justify-content: center;
+    margin-left: 24px;
+    margin-bottom: 40px;
 }
 
 .currentTime {
     font-family: Regular;
     size: 16px;
+    /* align-items: center; */
 }
