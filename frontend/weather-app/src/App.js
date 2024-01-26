@@ -6,6 +6,7 @@ import Timestamp from './views/timestamp/Time'
 import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
 import Time from './views/timestamp/Time';
 import WeatherProperty from './views/mainWeatherCard/WeatherProperty';
+import WeatherForecast from './views/weatherForecast/WeatherForecast';
 
 function App() {
   const [city, setCity] = useState('');
@@ -66,7 +67,8 @@ function App() {
     //   <p>{city}</p>
     // </>
 
-    <MainWeatherCard></MainWeatherCard>
+    // <MainWeatherCard></MainWeatherCard>
+    <WeatherForecast></WeatherForecast>
   );
 }
 
