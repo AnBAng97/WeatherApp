@@ -1,8 +1,12 @@
 import { useState } from "react";
 import styles from "./SearchBar.module.css"
-// import searchIcon from "./assets/search.png"
+import { useMediaQuery } from 'react-responsive'
 
 function SearchBar(props) {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+
     const [city, setCity] = useState("");
     
     const sendData = (e) => {

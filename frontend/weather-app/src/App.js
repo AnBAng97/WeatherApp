@@ -7,8 +7,12 @@ import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
 import Time from './views/timestamp/Time';
 import WeatherProperty from './views/mainWeatherCard/WeatherProperty';
 import WeatherForecast from './views/weatherForecast/WeatherForecast';
+import { useMediaQuery } from 'react-responsive'
+
 
 function App() {
+
+
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [weatherForecast, setWeatherForecast] = useState(null);
@@ -18,7 +22,7 @@ function App() {
   useEffect(() => {
     const getCurLocationWeather = () => {
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords);
+        // console.log(position.coords);
         getWeatherByCoords(position.coords.latitude, position.coords.longitude);
         getForecastByCoords(position.coords.latitude, position.coords.longitude);
       }
@@ -30,7 +34,7 @@ function App() {
         const response = await axios.get(`http://localhost:8080/api/weather/${latitude},${longitude}`);
 
         setWeatherData(response.data);
-        console.log("getWeatherByCoords " + response.data);
+        // console.log("getWeatherByCoords " + response.data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -122,7 +126,6 @@ function App() {
             }}>
               <SearchBar cityCallback={cityCallback} />
               <Time />
-              {/* <p>{city}</p> */}
             </div>
 
             {weatherData

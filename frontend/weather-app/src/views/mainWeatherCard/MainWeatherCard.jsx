@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import style from './MainWeatherCard.module.css'
+import { useMediaQuery } from 'react-responsive'
+
 function MainWeatherCard(props) {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+
     const current = props.weatherToday.current;
     const condition = current.condition;
     const weatherImg = condition.icon;

@@ -1,27 +1,23 @@
 // WeatherForecast.js
 import React, { useState } from 'react';
 import styles from './WeatherForecast.module.css'
+import { useMediaQuery } from 'react-responsive'
 
 function WeatherForecast(props) {
+  const isDesktop = useMediaQuery({ minWidth: 992 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  // console.log("isDesktop" + isDesktop);
+  // console.log("isTablet" + isTablet);
+  // console.log("isMobile" + isMobile);
+
   const weatherForecast = props.weatherForecast;
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxVisibleDays = 4;
   const weatherImg = "https://cdn.weatherapi.com/weather/64x64/day/116.png"
 
-  // const forecastData = [
-  //   { date: '2024-01-15', temperature: 25, condition: 'Sunny' },
-  //   { date: '2024-01-16', temperature: 22, condition: 'Partly Cloudy' },
-  //   { date: '2024-01-17', temperature: 18, condition: 'Cloudy' },
-  //   { date: '2024-01-18', temperature: 20, condition: 'Mostly Clear' },
-  //   { date: '2024-01-19', temperature: 15, condition: 'Rainy' },
-  //   { date: '2024-01-20', temperature: 19, condition: 'Clear' },
-  //   { date: '2024-01-21', temperature: 23, condition: 'Sunny' },
-  //   { date: '2024-01-22', temperature: 21, condition: 'Partly Cloudy' },
-  //   { date: '2024-01-23', temperature: 17, condition: 'Cloudy' },
-  //   { date: '2024-01-24', temperature: 18, condition: 'Mostly Clear' },
-  // ];
   const forecastData = weatherForecast.forecast.forecastday;
-  console.log("forecastData" + forecastData[1].date);
 
   const visibleDays = forecastData.slice(currentIndex, currentIndex + maxVisibleDays);
 
@@ -29,8 +25,6 @@ function WeatherForecast(props) {
     if (currentIndex == forecastData.length - maxVisibleDays) return;
 
     const nextIndex = currentIndex + 1 < forecastData.length ? currentIndex + 1 : 0;
-    // console.log('currentIndex' + currentIndex);
-    // console.log('nextIndex' + nextIndex);
 
     setCurrentIndex(nextIndex);
   };

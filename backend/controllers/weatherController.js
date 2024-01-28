@@ -1,5 +1,3 @@
-// const axios = require('axios');
-
 // Model
 const Weather = require('../models/Weather');
 
