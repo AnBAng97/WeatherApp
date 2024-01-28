@@ -19,7 +19,9 @@ app.use((req, res, next) => {
 const weatherController = require('./controllers/weatherController');
 
 // Routes
-app.get('/api/weather/:city', weatherController.getWeather);
+app.get('/api/weather/:location', weatherController.getWeather);
+app.get('/api/forecast/:location/:days', weatherController.getWeatherForecast);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
