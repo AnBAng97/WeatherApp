@@ -4,15 +4,14 @@ import styles from './WeatherForecast.module.css'
 import { useMediaQuery } from 'react-responsive'
 
 function WeatherForecast(props) {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const weatherForecast = props.weatherForecast;
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxVisibleDays = isDesktop? 4 : 10;
-  const distance = 200;
-  const weatherImg = "https://cdn.weatherapi.com/weather/64x64/day/116.png"
+
+  const backIcon = 'https://i.ibb.co/S78Y6br/back-icon.png'
+  const nextIcon = 'https://i.ibb.co/6gTFtc8/next-icon.png'
 
 
   const forecastData = weatherForecast.forecast.forecastday;
@@ -52,7 +51,7 @@ function WeatherForecast(props) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-            <img  src={weatherImg} alt='back_btn' className={styles.button}
+            <img  src={backIcon} alt='back_btn' className={styles.button}
               onClick={handleBackClick} />
           </div>}
 
@@ -62,7 +61,7 @@ function WeatherForecast(props) {
                 <div className={styles.data}>
                   {/* {day?.condition?.icon && <img className={styles.weatherImg} src={day.condition.icon} alt="Weather Icon" />} */}
 
-                  <img className={styles.weatherImg} src={forecast.day.condition.icon}></img>
+                  <img className={styles.weatherImg} src={forecast.day.condition.icon} alt={forecast.day.condition.text}></img>
                   <span className={styles.temperature}>{forecast.day.avgtemp_c}&deg;C</span>
                 </div>
                 <span className={styles.condition}>{forecast.day.condition.text}</span>
@@ -76,7 +75,7 @@ function WeatherForecast(props) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-            <img  src={weatherImg} alt='next_btn' className={styles.button}
+            <img  src={nextIcon} alt='next_btn' className={styles.button}
               onClick={handleNextClick} />
           </div>}
         </div>

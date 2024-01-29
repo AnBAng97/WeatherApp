@@ -2,18 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import SearchBar from './views/searchBar/SearchBar';
-import Timestamp from './views/timestamp/Time'
 import MainWeatherCard from './views/mainWeatherCard/MainWeatherCard';
 import Time from './views/timestamp/Time';
-import WeatherProperty from './views/mainWeatherCard/WeatherProperty';
 import WeatherForecast from './views/weatherForecast/WeatherForecast';
 import { useMediaQuery } from 'react-responsive'
 
 
 function App() {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const endpoint = 'http://localhost:8080/api';
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -24,7 +21,6 @@ function App() {
   useEffect(() => {
     const getCurLocationWeather = () => {
       navigator.geolocation.getCurrentPosition((position) => {
-        // console.log(position.coords);
         getWeatherByCoords(position.coords.latitude, position.coords.longitude);
         getForecastByCoords(position.coords.latitude, position.coords.longitude);
       }
@@ -33,10 +29,9 @@ function App() {
 
     const getWeatherByCoords = async (latitude, longitude) => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/weather/${latitude},${longitude}`);
+        const response = await axios.get(`${endpoint}/weather/${latitude},${longitude}`);
 
         setWeatherData(response.data);
-        // console.log("getWeatherByCoords " + response.data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -44,17 +39,15 @@ function App() {
 
     const getForecastByCoords = async (latitude, longitude) => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/forecast/${latitude},${longitude}/${maxForecastDays}`);
+        const response = await axios.get(`${endpoint}/forecast/${latitude},${longitude}/${maxForecastDays}`);
 
         setWeatherForecast(response.data);
-        // console.log("getWeatherByCoords " + response.data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
     };
 
     getCurLocationWeather();
-
   }, []);
 
   useEffect(() => {
@@ -64,17 +57,10 @@ function App() {
 
   const getWeather = async (coords) => {
     try {
-      // if (coords != null) {
-      //   console.log(coords)
-      //   const response = await axios.get(`http://localhost:8080/api/weather/${coords}`);
-      //   setWeatherForecast("coords" + response.data);
-      //   return;
-      // }
-
-      const response = await axios.get(`http://localhost:8080/api/weather/${city}`);
-      setWeatherData(response.data);
-
-      console.log()
+      if (city) {
+        const response = await axios.get(`${endpoint}/weather/${city}`);
+        setWeatherData(response.data);
+      }
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -82,15 +68,15 @@ function App() {
 
   const getWeatherForecast = async (coords) => {
     try {
-      if (coords != null) {
-        console.log(coords)
-        const response = await axios.get(`http://localhost:8080/api/forecast/${coords}/${maxForecastDays}`);
+      if (coords && maxForecastDays) {
+        const response = await axios.get(`${endpoint}/forecast/${coords}/${maxForecastDays}`);
         setWeatherForecast("coords" + response.data);
         return;
       }
-      const response = await axios.get(`http://localhost:8080/api/forecast/${city}/${maxForecastDays}`);
-      setWeatherForecast(response.data);
-      console.log(weatherForecast);
+      if (city && maxForecastDays) {
+        const response = await axios.get(`${endpoint}/forecast/${city}/${maxForecastDays}`);
+        setWeatherForecast(response.data);
+      }
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -101,24 +87,6 @@ function App() {
   };
 
   return (
-    // <div>
-    //   <h1>Weather App</h1>
-    //   <input
-    //     type="text"
-    //     value={city}
-    //     onChange={(e) => setCity(e.target.value)}
-    //     placeholder="Enter city"
-    //   />
-    //   <button onClick={getWeather}>Get Weather</button>
-
-    //   {weatherData && (
-    //     <div>
-    //       <h2>Weather in {weatherData.location.name}</h2>
-    //       <p>Temperature: {weatherData.current.temp_c} °C</p>
-    //       <p>Description: {weatherData.current.condition.text}</p>
-    //     </div>
-    //   )}
-    // </div>
     <>
       <div className="background-container">
         <div className="background-image">
@@ -127,7 +95,7 @@ function App() {
               display: 'flex',
             }}>
               <SearchBar cityCallback={cityCallback} />
-             {isDesktop &&  <Time />}
+              {isDesktop && <Time />}
             </div>
 
             {weatherData

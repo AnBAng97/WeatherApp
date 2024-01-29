@@ -12,8 +12,6 @@ class Weather {
     // const apiKey = process.env.API_KEY;
     const apiKey = '7b79e38e701947e3b2b163625241601';
     const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${queryString}&aqi=no`;
-
-    console.log(apiUrl);
     try {
       const response = await axios.get(apiUrl);
       return response.data;
@@ -30,7 +28,6 @@ class Weather {
     * Visit request parameter section to learn more. */
     const apiKey = '7b79e38e701947e3b2b163625241601';
     const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=${days}&aqi=no&alerts=no`;
-    console.log(`API CALLED: ${apiUrl}`);
     try {
       const response = await axios.get(apiUrl);
       return response.data;

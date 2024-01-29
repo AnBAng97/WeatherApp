@@ -4,7 +4,6 @@ const Weather = require('../models/Weather');
 exports.getWeather = async (req, res) => {
 
   const location = req.params.location;
-  console.log("location" + location);
   try {
     const weatherData = await Weather.getWeather(location);
     res.json(weatherData);

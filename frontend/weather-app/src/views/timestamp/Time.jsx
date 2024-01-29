@@ -1,14 +1,20 @@
 import styles from './Time.module.css'
-import { useMediaQuery } from 'react-responsive'
 
-function Time(){
-    const isDesktop = useMediaQuery({ minWidth: 992 });
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+function Time() {
 
-    return(
+    const currentDate = new Date();
+
+    // Get the current time
+    const currentHours = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
+
+    // Format the time as a string
+    const currentTime = `${currentHours}:${currentMinutes}`;
+
+
+    return (
         <div className={styles.timestamp}>
-            <span className={styles.currentTime}>Your current time: 21:45</span>
+            <span className={styles.currentTime}>Your current time: {currentTime}</span>
         </div>
     );
 }

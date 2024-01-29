@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import style from './MainWeatherCard.module.css'
 import { useMediaQuery } from 'react-responsive'
 
 function MainWeatherCard(props) {
-    const isDesktop = useMediaQuery({ minWidth: 992 });
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isDesktop = useMediaQuery({ minWidth: 768 });
 
     const current = props.weatherToday.current;
     const condition = current.condition;
@@ -106,7 +103,6 @@ function MainWeatherCard(props) {
             <hr />
         </div></div>
 
-    console.log(props.weatherToday)
     return (<>
         <div className={
             isDesktop ? style.mainWeatherCardDesktop : style.mainWeatherCardMobile}>

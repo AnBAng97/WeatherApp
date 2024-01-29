@@ -61,7 +61,10 @@
   /* margin-right: 10px; */
   padding-left: 8px;
   padding-right: 8px;
+}
 
+.forecastItem:hover{
+  background-color: #2d2d2d40;
 }
 
 .date {
