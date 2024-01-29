@@ -1,16 +1,16 @@
+import { useEffect, useState } from 'react';
 import styles from './Time.module.css'
+import { useMediaQuery } from 'react-responsive'
 
 function Time() {
 
-    const currentDate = new Date();
-
-    // Get the current time
-    const currentHours = currentDate.getHours();
-    const currentMinutes = currentDate.getMinutes();
-
-    // Format the time as a string
-    const currentTime = `${currentHours}:${currentMinutes}`;
-
+    const [currentTime, setCurrentTime] = useState(null);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(() => new Date().toTimeString().substring(0, 8));
+        }, 1000);
+        return () => clearInterval(interval);
+    })
 
     return (
         <div className={styles.timestamp}>
