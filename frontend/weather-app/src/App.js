@@ -11,52 +11,18 @@ import { useMediaQuery } from 'react-responsive'
 function App() {
   const endpoint = 'http://localhost:8080/api';
   const isDesktop = useMediaQuery({ minWidth: 768 });
-
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [weatherForecast, setWeatherForecast] = useState(null);
   const maxForecastDays = 10;
 
-  //Load current location weather on first load
-  useEffect(() => {
-    const getCurLocationWeather = () => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        getWeatherByCoords(position.coords.latitude, position.coords.longitude);
-        getForecastByCoords(position.coords.latitude, position.coords.longitude);
-      }
-      );
-    }
-
-    const getWeatherByCoords = async (latitude, longitude) => {
-      try {
-        const response = await axios.get(`${endpoint}/weather/${latitude},${longitude}`);
-
-        setWeatherData(response.data);
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
-    };
-
-    const getForecastByCoords = async (latitude, longitude) => {
-      try {
-        const response = await axios.get(`${endpoint}/forecast/${latitude},${longitude}/${maxForecastDays}`);
-
-        setWeatherForecast(response.data);
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
-    };
-
-    getCurLocationWeather();
-  }, []);
-
-  useEffect(() => {
-    getWeather();
-    getWeatherForecast();
-  }, [city])
-
-  const getWeather = async (coords) => {
+  const getWeather = async (latitude, longitude) => {
     try {
+      if (latitude && longitude && maxForecastDays) {
+        const response = await axios.get(`${endpoint}/weather/${latitude},${longitude}`);
+        setWeatherData(response.data);
+        return;
+      }
       if (city) {
         const response = await axios.get(`${endpoint}/weather/${city}`);
         setWeatherData(response.data);
@@ -66,11 +32,11 @@ function App() {
     }
   };
 
-  const getWeatherForecast = async (coords) => {
+  const getWeatherForecast = async (latitude, longitude) => {
     try {
-      if (coords && maxForecastDays) {
-        const response = await axios.get(`${endpoint}/forecast/${coords}/${maxForecastDays}`);
-        setWeatherForecast("coords" + response.data);
+      if (latitude && longitude && maxForecastDays) {
+        const response = await axios.get(`${endpoint}/forecast/${latitude},${longitude}/${maxForecastDays}`);
+        setWeatherForecast(response.data);
         return;
       }
       if (city && maxForecastDays) {
@@ -78,9 +44,28 @@ function App() {
         setWeatherForecast(response.data);
       }
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      console.error('Error fetching weather forecast data:', error);
     }
   }
+
+  //Load current location weather on first load
+  useEffect(() => {
+    const getCurLocationWeather = () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const {latitude, longitude} = position.coords;
+        getWeather(latitude, longitude);
+        getWeatherForecast(position.coords.latitude, position.coords.longitude);
+      }
+      );
+    }
+
+    getCurLocationWeather();
+  }, []);
+
+  useEffect(() => {
+    getWeather();
+    getWeatherForecast();
+  }, [city])
 
   const cityCallback = (city) => {
     setCity(city);
@@ -97,7 +82,6 @@ function App() {
               <SearchBar cityCallback={cityCallback} />
               {isDesktop && <Time />}
             </div>
-
             {weatherData
               && (<MainWeatherCard weatherToday={weatherData} />)}
             {weatherForecast
