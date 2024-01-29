@@ -1,8 +1,18 @@
-/* WeatherForecast.css */
 .weatherForecast {
   text-align: center;
   /* padding: 16px; */
   width: 808px;
+  height: 179px;
+  background-color: rgb(255, 255, 255, 0.9);
+  border: 1px solid grey;
+  box-shadow: 0 5px 25px #2d2d2d40;
+  border-radius: 5px;
+}
+
+.weatherForecastMobile {
+  text-align: center;
+  /* padding: 16px; */
+  width: 357px;
   height: 179px;
   background-color: rgb(255, 255, 255, 0.9);
   border: 1px solid grey;
@@ -27,7 +37,19 @@
   vertical-align: middle;
   width: 680px;
   justify-content: space-between;
+  overflow: hidden;
 }
+
+
+.forecastItemsMobile {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  vertical-align: middle;
+  width:100vw;
+  justify-content: space-between;
+  overflow: scroll;
+}
+
 
 .forecastItem {
   display: flex;

@@ -1,7 +1,7 @@
   .cityForm{
     /* margin: 25px; */
     /* box-sizing: border-box; */
-    width: 392px;
+    /* width: 392px; */
     height: 48px;
     margin-bottom: 40px;
   }
@@ -30,7 +30,7 @@
     color: white;
     font-size: 17px;
     border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
+    border-left: none;
     cursor: pointer;
     box-sizing: border-box;
     border-top-right-radius: 5px;

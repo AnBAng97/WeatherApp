@@ -11,7 +11,9 @@ import { useMediaQuery } from 'react-responsive'
 
 
 function App() {
-
+  const isDesktop = useMediaQuery({ minWidth: 992 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -45,7 +47,7 @@ function App() {
         const response = await axios.get(`http://localhost:8080/api/forecast/${latitude},${longitude}/${maxForecastDays}`);
 
         setWeatherForecast(response.data);
-        console.log("getWeatherByCoords " + response.data);
+        // console.log("getWeatherByCoords " + response.data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -125,7 +127,7 @@ function App() {
               display: 'flex',
             }}>
               <SearchBar cityCallback={cityCallback} />
-              <Time />
+             {isDesktop &&  <Time />}
             </div>
 
             {weatherData

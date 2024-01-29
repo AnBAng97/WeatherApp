@@ -1,4 +1,4 @@
-.mainWeatherCard {
+.mainWeatherCardDesktop {
     width: 808px;
     height: 476px;
     display: inline-block;
@@ -8,6 +8,19 @@
     border-radius: 5px;
     box-shadow: 0 5px 25px #2d2d2d40;
     margin-bottom: 40px;
+}
+
+.mainWeatherCardMobile {
+    width: 357px;
+    height: 476px;
+    display: inline-block;
+    background-color: rgb(255, 255, 255, 0.9);
+    border: 1px solid grey;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px #2d2d2d40;
+    margin-bottom: 40px;
+    overflow: scroll;
 }
 
 .cityName {
@@ -55,10 +68,14 @@
     /* justify-content: space-evenly; */
 }
 
-.details {
+.desktopDetails {
     margin: 16px;
     width: 50%;
-   
+}
+
+.mobileDetails {
+    margin: 16px;
+    width: 100%;
 }
 
 .property {
